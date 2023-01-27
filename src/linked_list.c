@@ -6,6 +6,8 @@
 
 adhesive_linked_list *adhesive_linked_list_new(void) {
     adhesive_linked_list *list = malloc(sizeof(adhesive_linked_list));
+    assert(list != NULL && "malloc() failed");
+
     list->head = list->tail = NULL;
     list->len = 0;
     return list;
@@ -28,7 +30,10 @@ void adhesive_linked_list_free(adhesive_linked_list *list,
 /* Insert functions */
 void adhesive_linked_list_pushback(adhesive_linked_list *list, void *data) {
     assert(list != NULL);
+
     adhesive_linked_list_elem *elem = malloc(sizeof(adhesive_linked_list_elem));
+    assert(list != NULL && "malloc() failed");
+
     elem->prev = elem->next = NULL;
     elem->data = data;
 
@@ -51,6 +56,8 @@ void adhesive_linked_list_insert_at(adhesive_linked_list *list, void *data,
     }
 
     adhesive_linked_list_elem *elem = malloc(sizeof(adhesive_linked_list_elem));
+    assert(list != NULL && "malloc() failed");
+
     elem->prev = elem->next = NULL;
     elem->data = data;
 
@@ -96,6 +103,7 @@ void *adhesive_linked_list_remove_at(adhesive_linked_list *list, uint64_t idx) {
 
 void *adhesive_linked_list_pop(adhesive_linked_list *list) {
     assert(list != NULL);
+
     adhesive_linked_list_elem *elem = list->tail;
     if (elem == NULL) {
         return NULL;
