@@ -14,13 +14,13 @@ adhesive_linked_list *adhesive_linked_list_new(void) {
 }
 
 void adhesive_linked_list_free(adhesive_linked_list *list,
-                               void(callback)(void *)) {
+                               void (*free_func)(void *)) {
     assert(list != NULL);
 
     adhesive_linked_list_elem *current, *next;
     for (current = list->head; current; current = next) {
         next = current->next;
-        callback(current->data);
+        free_func(current->data);
         free(current);
     }
 
