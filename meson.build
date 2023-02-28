@@ -6,7 +6,8 @@ project('adhesive', 'c', version: '0.1.0',
 )
 
 sources = [
-  'src/linked_list.c'
+  'src/linked_list.c',
+  'src/stack.c',
 ]
 includes = include_directories('include')
 
