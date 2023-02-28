@@ -10,7 +10,10 @@ adhesive_stack *adhesive_stack_new(void) {
 
     return stack;
 }
-void adhesive_stack_free(adhesive_stack *stack) {
+void adhesive_stack_free(adhesive_stack *stack, void (*free_func)(void *)) {
+    for (uint64_t i = 0; i < stack->len; i++) {
+        free_func(stack->_data[i]);
+    }
     free(stack->_data);
     free(stack);
 }

@@ -11,10 +11,26 @@ typedef struct {
 
 #define ADHESIVE_STACK_DEFAULT_CAP 16
 
+/**
+ * Allocates a new adhesive stack on the heap. Needs to be freed by calling
+ * `adhesive_stack_free()`
+ */
 adhesive_stack *adhesive_stack_new(void);
-void adhesive_stack_free(adhesive_stack *stack);
+/**
+ * Frees the given stack.
+ * @param stack the stack to free
+ * @param free_func a function that is called for each element in the stack
+ */
+void adhesive_stack_free(adhesive_stack *stack, void (*free_func)(void *));
 
+/**
+ * Pushes a new item onto the stack.
+ */
 void adhesive_stack_push(adhesive_stack *stack, void *data);
+/**
+ * Pops an item from the stack.
+ * @returns the d item, or NULL if the stack is empty
+ */
 adhesive_stack *adhesive_stack_pop(adhesive_stack *stack);
 
 #endif // _ADHESIVE_STACK_H_
