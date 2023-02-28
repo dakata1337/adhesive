@@ -1,6 +1,10 @@
 #include "stack.h"
 #include <stdlib.h>
 
+// TODO: create a function called `adhesive_stack_with_capacity()` that
+// allocates a new stack with a given capacity instead of the default one.
+// TODO: test the performace of a big stack (in GiB) reallocation.
+
 adhesive_stack *adhesive_stack_new(void) {
     adhesive_stack *stack = malloc(sizeof(adhesive_stack));
 
