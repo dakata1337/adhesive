@@ -5,5 +5,6 @@
 # adhesive
 A simple (not freestanding) library that implements some basic features, such as:
 - linked list
+- stack
 
 **NOTE:** Do not use for production as it's probably buggy!
