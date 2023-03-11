@@ -1,19 +1,22 @@
-#include "stack.h"
+#include <stdint.h>
 #include <stdlib.h>
 
-// TODO: create a function called `adhesive_stack_with_capacity()` that
-// allocates a new stack with a given capacity instead of the default one.
-// TODO: test the performace of a big stack (in GiB) reallocation.
+#include "stack.h"
 
-adhesive_stack *adhesive_stack_new(void) {
+adhesive_stack *adhesive_stack_with_capacity(uint64_t capacity) {
     adhesive_stack *stack = malloc(sizeof(adhesive_stack));
 
-    stack->_data = malloc(sizeof(void *) * ADHESIVE_STACK_DEFAULT_CAP);
+    stack->_data = malloc(sizeof(void *) * capacity);
     stack->len = 0;
-    stack->capacity = ADHESIVE_STACK_DEFAULT_CAP;
+    stack->capacity = capacity;
 
     return stack;
 }
+
+adhesive_stack *adhesive_stack_new(void) {
+    return adhesive_stack_with_capacity(ADHESIVE_STACK_DEFAULT_CAP);
+}
+
 void adhesive_stack_free(adhesive_stack *stack, void (*free_func)(void *)) {
     for (uint64_t i = 0; i < stack->len; i++) {
         free_func(stack->_data[i]);
@@ -23,6 +26,7 @@ void adhesive_stack_free(adhesive_stack *stack, void (*free_func)(void *)) {
 }
 
 void adhesive_stack_push(adhesive_stack *stack, void *data) {
+    // If the stack is full, double the capacity
     if ((stack->len + 1) >= stack->capacity) {
         stack->capacity *= 2;
         stack->_data = realloc(stack->_data, sizeof(void *) * stack->capacity);
@@ -31,12 +35,13 @@ void adhesive_stack_push(adhesive_stack *stack, void *data) {
     stack->_data[stack->len] = data;
     stack->len += 1;
 }
-adhesive_stack *adhesive_stack_pop(adhesive_stack *stack) {
+
+void *adhesive_stack_pop(adhesive_stack *stack) {
     if (stack->len == 0) {
         return NULL;
     }
 
-    adhesive_stack *top = stack->_data[stack->len - 1];
     stack->len -= 1;
-    return top;
+    void *data = stack->_data[stack->len];
+    return data;
 }
