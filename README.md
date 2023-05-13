@@ -1,5 +1,5 @@
 <h6 align="center">
-  <img src="meta/logo.png" width=15%/>
+  <img src="assets/logo.png" width=15%/>
 </h6>
 
 # adhesive
