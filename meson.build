@@ -3,7 +3,7 @@ project('adhesive', ['c'],
   default_options : [
     'warning_level=3',
     'werror=true',
-    'b_sanitize=address,undefined,memory,thread',
+    'b_sanitize=address,undefined',
     'buildtype=release',
     'optimization=2',
   ]
