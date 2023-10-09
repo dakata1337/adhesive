@@ -30,18 +30,20 @@
         vec->data[vec->length++] = data;                                       \
     }
 
-AD_VECTOR_OF(int8_t, i8);
-AD_VECTOR_OF(uint8_t, u8);
+/* TODO: implement vec_*_free() */
 
-AD_VECTOR_OF(int16_t, i16);
-AD_VECTOR_OF(uint16_t, u16);
+AD_VECTOR_OF(int8_t, i8)
+AD_VECTOR_OF(uint8_t, u8)
 
-AD_VECTOR_OF(int32_t, i32);
-AD_VECTOR_OF(uint32_t, u32);
+AD_VECTOR_OF(int16_t, i16)
+AD_VECTOR_OF(uint16_t, u16)
 
-AD_VECTOR_OF(int64_t, i64);
-AD_VECTOR_OF(uint64_t, u64);
+AD_VECTOR_OF(int32_t, i32)
+AD_VECTOR_OF(uint32_t, u32)
 
-AD_VECTOR_OF(void *, void);
+AD_VECTOR_OF(int64_t, i64)
+AD_VECTOR_OF(uint64_t, u64)
+
+AD_VECTOR_OF(void *, void)
 
 #endif // _ADHESIVE_VECTOR_H_

@@ -30,7 +30,17 @@ src = [
     './src/linked_list.c',
 ]
 
-libmicrodns = library('adhesive',
+project_target = static_library(
+    meson.project_name(),
     src,
+    install: true,
     include_directories: incdirs,
 )
+
+# Make this library usable as a Meson subproject.
+project_dep = declare_dependency(
+    include_directories: incdirs,
+    link_with: project_target
+)
+set_variable(meson.project_name() + '_dep', project_dep)
+meson.override_dependency(meson.project_name(), project_dep)

@@ -67,6 +67,6 @@ void ad_string_append(ad_string *dest, const ad_string *const src) {
     dest->len = new_len;
 }
 
-inline ad_string *ad_string_clone(const ad_string *const str) {
+ad_string *ad_string_clone(const ad_string *const str) {
     return ad_string_from(str->str);
 }

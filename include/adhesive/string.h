@@ -18,7 +18,7 @@ void ad_string_free(ad_string *str);
 
 void ad_string_append_cstr(ad_string *str, const char *const data);
 void ad_string_append(ad_string *dest, const ad_string *const src);
-inline ad_string *ad_string_clone(const ad_string *const str);
+ad_string *ad_string_clone(const ad_string *const str);
 
 #define ad_string_split(STR, DELIM, CALLBACK)                                  \
     {                                                                          \
